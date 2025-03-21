@@ -1,4 +1,5 @@
 let cityInput=document.getElementById('cityInput');
+let img=document.getElementById('img')
 
 async function getWeather(){
     if(cityInput.value==""){alert('Input is empty');return}
@@ -16,6 +17,9 @@ async function displayvalues(n){
         let utc=n['dt']
         let local=new Date(utc*1000)
         let convert=n['main'].temp
+        if (Math.round(convert-273.15) < 25) {img.src = "raining.png";} 
+        else if (Math.round(convert-273.15) >= 30 && Math.round(convert-273.15)) {img.src = "cloudy.png";}
+         else {img.src = "https://openweathermap.org/img/wn/01d.png";}
         document.querySelector('.location').textContent=n['name'];
         document.querySelector('.day').textContent=local
         document.querySelector('.temp').textContent=Math.round(convert-273.15) +`°C`
@@ -23,6 +27,7 @@ async function displayvalues(n){
     }
     catch(error){
         console.log(error)
+        alert('Could not fetch the details');
     }
 }
 
