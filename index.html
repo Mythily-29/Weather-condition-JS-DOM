@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="weather-container">
+        <div class="input-container">
+            <input type="text" id="cityInput" placeholder="Enter city name">
+            <button onclick="getWeather()">Get Weather</button>
+        </div>
+        <div class="weather-card">
+            <h2 class="location">Chennai</h2>
+            <p><span class="day">Fri Mar 20 2025 16:31:59 GMT+0530 (India Standard Time) </span></p>
+            <div class="weather-icon">
+                <img src="https://openweathermap.org/img/wn/01d.png" alt="Weather Icon" id="img">
+            </div>
+            <p class="temperature">Temperature<h1 class="temp">25 <em>°C</em></h1></p>
+            <p class="condition">Condition: <h1 class="condi">Sunny</h1></p>
+        </div>
+    </div>
+    <script src="sample.js"></script>
+</body>
+</html>
