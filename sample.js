@@ -1,18 +1,17 @@
 let cityInput=document.getElementById('cityInput');
 let img=document.getElementById('img')
+let input_btn=document.getElementById('input-btn');
 
-async function getWeather(){
-    if(cityInput.value==""){alert('Input is empty');return}
-    try{
-        let data=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=e4fd5e2f44964a7e62097cc923266c3e`)
-        let parse=await data.json()
-        displayvalues(parse)
-    }
-    catch(error){
-        console.log(error)
-    }
+async function display(n) {
+    let url=`https://api.openweathermap.org/data/2.5/weather?q=${n}&appid=e4fd5e2f44964a7e62097cc923266c3e`
+    await fetch(url)
+    .then(res=>res.json())
+    .then(data=>dis(data))
+    .catch(error=>console.log(error))
 }
-async function displayvalues(n){
+display('Chennai')
+
+async function dis(n) {
     try{
         let utc=n['dt']
         let local=new Date(utc*1000)
@@ -31,3 +30,6 @@ async function displayvalues(n){
     }
 }
 
+input_btn.addEventListener('click',()=>{
+    cityInput.value==""?alert('Fill the input') : display(cityInput.value)
+})
